@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelBuddy - Simple College Project</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="brand">
+            <img src="./logo.png" alt="TravelBuddy logo" style="height:50px; width:auto;" />
+            <span class="name">TravelBuddy</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="search-card">
+            <h1>Plan Your India Trip</h1>
+            <p>Enter your budget and number of nights to get travel suggestions</p>
+            
+            <form id="trip-form">
+                <div class="field-group">
+                    <label for="budget">Budget (₹)</label>
+                    <input type="number" id="budget" name="budget" placeholder="e.g. 50000" min="1000" required />
+                </div>
+
+                <div class="field-group">
+                    <label for="nights">Number of Nights</label>
+                    <input type="number" id="nights" name="nights" value="5" min="1" max="30" required />
+                </div>
+
+                <button type="submit" class="btn-primary">Get Travel Suggestions</button>
+            </form>
+        </section>
+
+        <section id="results" class="results">
+            <!-- Results will be displayed here -->
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>College Project - TravelBuddy | Demonstrates SQL, Java, JDBC</p>
+    </footer>
+
+    <!-- Use simplified JavaScript -->
+    <script src="app-simple.js"></script>
+</body>
+</html>

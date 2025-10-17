@@ -1,0 +1,13 @@
+com/travelbuddy/model/Hotel.class
+com/travelbuddy/repository/HotelRepository$1.class
+com/travelbuddy/controller/ItineraryController$1.class
+com/travelbuddy/model/Itinerary.class
+com/travelbuddy/service/ItineraryService.class
+com/travelbuddy/model/DayPlan.class
+com/travelbuddy/model/SuggestionRequest.class
+com/travelbuddy/repository/HotelRepository.class
+com/travelbuddy/model/Destination.class
+com/travelbuddy/controller/ItineraryController.class
+com/travelbuddy/BackendApplication.class
+com/travelbuddy/repository/DestinationRepository.class
+com/travelbuddy/repository/DestinationRepository$1.class

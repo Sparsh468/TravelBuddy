@@ -1,0 +1,186 @@
+:root {
+  --bg: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --card: #f9fafb;
+  --border: #e5e7eb;
+  /* Indian-inspired palette */
+  --saffron: #d97706;
+  --maroon: #7c2d12;
+  --peacock: #0e7490;
+  --indigo: #4338ca;
+  --emerald: #10b981;
+  --gold: #d4a373;
+  --primary: var(--saffron);
+  --primary-dark: #b45309;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  /* layered background: subtle pattern over a soft gradient */
+  background-image:
+    radial-gradient(circle at 10px 10px, rgba(212,163,115,0.08) 2px, transparent 2px),
+    radial-gradient(circle at 30px 30px, rgba(212,163,115,0.06) 2px, transparent 2px),
+    linear-gradient(180deg, #fff7ed 0%, #ffffff 30%, #e0f2fe 100%);
+  background-size: 40px 40px, 40px 40px, 100% 100%;
+  background-attachment: fixed, fixed, fixed;
+  color: var(--text);
+}
+
+/* Translucent Taj Mahal overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url('https://images.unsplash.com/photo-1580409730557-5c81a741f91d?q=80&w=1600&auto=format&fit=crop') no-repeat center 70% / min(92vw, 1200px) auto;
+  opacity: 0.196;
+  filter: grayscale(100%) contrast(110%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Lift main sections above the overlay */
+.navbar, .container, .footer, .modal { position: relative; z-index: 1; }
+
+.navbar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(217, 119, 6, 0.95), rgba(255, 255, 255, 0.30));
+  backdrop-filter: saturate(180%) blur(10px);
+}
+
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 700; }
+.brand .logo { font-size: 20px; }
+.brand .name { letter-spacing: 0.2px; }
+
+.nav-links a { color: var(--text); text-decoration: none; margin-left: 16px; font-weight: 600; }
+.nav-links a:hover { text-decoration: underline; }
+
+.container {
+  max-width: 1100px;
+  margin: 32px auto;
+  padding: 0 16px;
+}
+
+.search-card {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  backdrop-filter: saturate(140%) blur(2px);
+}
+
+.search-card h1 { margin: 0 0 8px; font-size: 24px; }
+
+.search-card .search-subtitle {
+  margin: 0 0 16px;
+  font-size: 1rem;
+  color: var(--muted);
+  text-align: center;
+  line-height: 1.5;
+}
+
+.form { display: grid; gap: 16px; }
+
+.field-group { display: grid; gap: 8px; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.field { display: grid; gap: 8px; }
+
+label { font-weight: 600; }
+input, select {
+  padding: 12px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: #fff;
+  font-size: 16px;
+}
+
+.input-with-prefix { position: relative; }
+.input-with-prefix .prefix {
+  position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+  color: var(--muted);
+}
+.input-with-prefix input { padding-left: 28px; }
+
+.btn-primary {
+  display: inline-flex; align-items: center; justify-content: center;
+  background: linear-gradient(90deg, var(--primary), var(--peacock));
+  color: #fff;
+  border: none;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.btn-primary:hover { filter: brightness(0.95); }
+
+.results { margin-top: 24px; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+
+.card {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.92);
+  display: grid;
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+}
+
+.card img { width: 100%; height: 160px; object-fit: cover; }
+.img-placeholder { width: 100%; height: 160px; display: grid; place-items: center; background: #fff7ed; color: var(--maroon); font-weight: 700; border-bottom: 1px solid var(--border); }
+.card .content { padding: 12px; display: grid; gap: 6px; }
+.card .title { font-weight: 700; color: var(--maroon); }
+.card .subtitle { color: var(--muted); font-size: 14px; }
+.card .price { font-weight: 700; }
+.card:hover { transform: translateY(-2px); box-shadow: 0 12px 20px rgba(0,0,0,0.08); border-color: rgba(217,119,6,0.35); }
+
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 16px 24px;
+  text-align: center;
+  color: var(--muted);
+}
+
+@media (max-width: 640px) {
+  .field-row { grid-template-columns: 1fr; }
+}
+
+/* Modal */
+.modal { position: fixed; inset: 0; display: none; }
+.modal[aria-hidden="false"] { display: block; }
+.modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.4); }
+.modal-content {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  width: min(920px, 92vw);
+  max-height: 90vh; overflow: auto;
+  background: #fff; border-radius: 16px; border: 1px solid var(--border);
+}
+.modal-close { position: sticky; top: 0; margin-left: auto; display: block; background: transparent; border: none; font-size: 28px; padding: 10px 14px; cursor: pointer; }
+
+.details-header { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+.details-header img { width: 100%; height: 280px; object-fit: cover; }
+.details-hero { padding: 16px; display: grid; gap: 6px; }
+.badge { display: inline-block; padding: 4px 8px; border-radius: 999px; font-size: 12px; }
+.badge-ok { background: rgba(16,185,129,0.15); color: #065f46; border: 1px solid rgba(16,185,129,0.35); }
+.badge-warn { background: rgba(217,119,6,0.12); color: #7c2d12; border: 1px solid rgba(217,119,6,0.35); }
+.details-body { padding: 16px; display: grid; gap: 16px; }
+/* Section accents */
+.section-title { color: var(--indigo); }
+.hotel-item { border-left: 4px solid var(--peacock); }
+.day-item { border-left: 4px solid var(--primary); }
+.hotel-item, .day-item { border: 1px solid var(--border); border-radius: 12px; padding: 12px; }
+.hotel-item .name { font-weight: 700; }
+.hotel-item .note, .day-item .note { color: var(--muted); font-size: 14px; }
+
+
+/* Deeper dark theme overrides (removed) */
+
+

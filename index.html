@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Plan Your Trip</title>
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="brand">
+        <span class="logo" aria-label="Travel bags">
+          <img src="./logo.png" alt="TravelBuddy logo" style="height:72px; width:auto; display:block;" />
+        </span>
+        <span class="name"><Table> TravelBuddy</Table></span>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="search-card" aria-labelledby="search-title">
+        <h1 id="search-title">Find your perfect India trip</h1>
+        <p class="search-subtitle">Enter your budget and we'll automatically suggest the best travel style for you</p>
+        <form id="trip-form" class="form" novalidate>
+          <div class="field-group">
+            <label for="budget">Budget (₹)</label>
+            <div class="input-with-prefix">
+              <span class="prefix">₹</span>
+              <input id="budget" name="budget" type="text" inputmode="numeric" placeholder="e.g. 50000" aria-describedby="budget-help" autocomplete="off" />
+            </div>
+            <small id="budget-help">Enter your total budget in Indian Rupees.</small>
+          </div>
+
+          <div class="field-group">
+            <label for="nights">Nights</label>
+            <input id="nights" name="nights" type="number" min="1" max="30" value="5" />
+            <small>Travel style is automatically determined based on your budget.</small>
+          </div>
+
+          <button type="submit" class="btn-primary">Generate itinerary</button>
+        </form>
+      </section>
+
+      <section id="results" class="results" aria-live="polite"></section>
+    </main>
+
+    <div id="details-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="details-title" aria-hidden="true">
+      <div class="modal-backdrop"></div>
+      <div class="modal-content">
+        <button class="modal-close" aria-label="Close">×</button>
+        <div id="details-body"></div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p>Made for India • Prices in INR</p>
+    </footer>
+
+    <script src="./app.js" defer></script>
+  </body>
+  </html>
+
+
